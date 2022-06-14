@@ -112,3 +112,7 @@ function add_or_subtract(s){
     answer=num;
     return answer;
 }
+
+function send_char(c){
+    console.log(c);
+}

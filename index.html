@@ -6,8 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body onload="evaluate_string();">
+
+    <div class="row">
+        <div class="buttons" onclick="send_char('1');">1</div>
+        <div class="buttons" onclick="send_char('2');">2</div>
+        <div class="buttons" onclick="send_char('3');">3</div>
+        <div class="buttons" onclick="send_char('+');">+</div>
+    </div>
+
+    <div class="row">
+        <div class="buttons" onclick="send_char('4');">4</div>
+        <div class="buttons" onclick="send_char('5');">5</div>
+        <div class="buttons" onclick="send_char('6');">6</div>
+        <div class="buttons" onclick="send_char('-');">-</div>
+    </div>
+
+    <div class="row">
+        <div class="buttons" onclick="send_char('7');">7</div>
+        <div class="buttons" onclick="send_char('8');">8</div>
+        <div class="buttons" onclick="send_char('9');">9</div>
+        <div class="buttons" onclick="send_char('x');">x</div>
+    </div>
+
+    <div class="row">
+        <div class="buttons" onclick="send_char('');"></div>
+        <div class="buttons" onclick="send_char('0');">0</div>
+        <div class="buttons" onclick="send_char('');"></div>
+        <div class="buttons" onclick="send_char('/');">/</div>
+    </div>
     
 </body>
 </html>
