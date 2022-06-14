@@ -115,9 +115,14 @@ function add_or_subtract(s){
 }
 
 function send_char(c){
-    if(c=='='){
+    if(c=='C'){
+        input_equation=""; process_equation="";
+        document.getElementsByClassName("text")[0].innerHTML=input_equation;
+    }
+    else if(c=='='){
         evaluate_string();
-        document.getElementsByClassName("text")[0].innerHTML=process_equation;
+        input_equation=process_equation;
+        document.getElementsByClassName("text")[0].innerHTML=input_equation;
     }
     else{
         input_equation=input_equation+c;

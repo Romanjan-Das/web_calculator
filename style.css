@@ -23,14 +23,17 @@
     width: fit-content;
     border: 2px darkgrey solid;
     padding: 5px;
+    padding-top: 2px;
     display: flex;
     flex-direction: column;
 }
 
 .text{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
     border: 2px darkgrey solid;
     padding: 2px;
     height: 60px;
-    text-align: left;
     margin-bottom: 7px;
 }
