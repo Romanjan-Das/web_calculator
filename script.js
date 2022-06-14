@@ -1,5 +1,5 @@
 const PLUS='+',MINUS='-',DIVIDE='/',MULTIPLY='x',LEFTBRACKET='(',RIGHTBRACKET=')'
-var process_equation=""; var input_equation="5x5-5";
+var process_equation=""; var input_equation="5x20-5+3x5+20/5+2x3x2+99/11/9-2x-2x-2";
 function evaluate_string(){
     var m=0; var temp=""; var temporary_equation="";
     while(temporary_equation!=input_equation){
