@@ -9,6 +9,7 @@
     background-color: azure;
     border: 2px darkgray solid;
     border-radius: 5px;
+    cursor: pointer;
 }
 .buttons:hover{
     background-color: aqua;
@@ -17,4 +18,19 @@
 .row{
     display: flex;
     flex-direction: row;
+}
+.column{
+    width: fit-content;
+    border: 2px darkgrey solid;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.text{
+    border: 2px darkgrey solid;
+    padding: 2px;
+    height: 60px;
+    text-align: left;
+    margin-bottom: 7px;
 }

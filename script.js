@@ -1,5 +1,6 @@
 const PLUS='+',MINUS='-',DIVIDE='/',MULTIPLY='x',LEFTBRACKET='(',RIGHTBRACKET=')'
-var process_equation=""; var input_equation="5x20-5+3x5+20/5+2x3x2+99/11/9-2x-2x-2";
+var process_equation=""; /* var input_equation="5x20-5+3x5+20/5+2x3x2+99/11/9-2x-2x-2";*/
+var input_equation="";
 function evaluate_string(){
     var m=0; var temp=""; var temporary_equation="";
     while(temporary_equation!=input_equation){
@@ -114,5 +115,14 @@ function add_or_subtract(s){
 }
 
 function send_char(c){
-    console.log(c);
+    if(c=='='){
+        evaluate_string();
+        document.getElementsByClassName("text")[0].innerHTML=process_equation;
+    }
+    else{
+        input_equation=input_equation+c;
+        document.getElementsByClassName("text")[0].innerHTML=input_equation;
+        console.log(input_equation);
+    }
+
 }
