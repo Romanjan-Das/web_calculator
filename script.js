@@ -1,7 +1,13 @@
-const PLUS='+',MINUS='-',DIVIDE='/',MULTIPLY='x',LEFTBRACKET='(',RIGHTBRACKET=')'
+const PLUS='+',MINUS='-',DIVIDE='/',MULTIPLY='x',EQUAL='=';
 var process_equation=""; /* var input_equation="5x20-5+3x5+20/5+2x3x2+99/11/9-2x-2x-2";*/
 var input_equation="";
-function evaluate_string(){
+
+var p; var c; var input_string=""; var no_key_pressed=true;
+var allow=false; var equal_is_pressed=false;
+
+
+function evaluate_string(inp_eq){
+    input_equation=inp_eq;
     var m=0; var temp=""; var temporary_equation="";
     while(temporary_equation!=input_equation){
         temporary_equation=input_equation;
@@ -26,6 +32,7 @@ function evaluate_string(){
         process_equation=add_or_subtract(process_equation);
         console.log(process_equation);
     }
+    return process_equation;
 }
 
 function remove_redundant_plus_and_minus_sign(s){
@@ -114,20 +121,106 @@ function add_or_subtract(s){
     return answer;
 }
 
-function send_char(c){
-    if(c=='C'){
-        input_equation=""; process_equation="";
-        document.getElementsByClassName("text")[0].innerHTML=input_equation;
-    }
-    else if(c=='='){
-        evaluate_string();
-        input_equation=process_equation;
-        document.getElementsByClassName("text")[0].innerHTML=input_equation;
+function verify_input(x){
+    if(equal_is_pressed && cn(x)){
+        no_key_pressed=true; allow=false; input_string=""; equal_is_pressed=false;
     }
     else{
-        input_equation=input_equation+c;
-        document.getElementsByClassName("text")[0].innerHTML=input_equation;
-        console.log(input_equation);
+        equal_is_pressed=false;
+    }
+    c=x;
+
+    if(no_key_pressed){
+        if(c==MINUS||cn(c)){
+            p=c;
+            no_key_pressed=false;
+            allow=true;
+        }
+    }
+    else{
+        if(c==DIVIDE){allow=adi();}
+        if(c==MULTIPLY){allow=amu();}
+        if(c==PLUS){allow=apl();}
+        if(c==MINUS){allow=ami();}
+        if(cn(c)){allow=anu();}
+        if(c==EQUAL){allow=aeq();}
     }
 
+    if(c!=EQUAL && allow){
+        p=c;
+        input_string=input_string+c;
+        document.getElementsByClassName("text")[0].innerHTML=input_string;
+    }
+    else if(c==EQUAL && allow){
+        input_string=evaluate_string(input_string);
+        document.getElementsByClassName("text")[0].innerHTML=input_string;
+        input_string=input_string+""; // this converts number to string
+        p=input_string.charAt(input_string.length-1);
+    }
+}
+
+function cn(x){
+    if(x=='0'||x=='1'||x=='2'||x=='3'||x=='4'||x=='5'||x=='6'||x=='7'||x=='8'||x=='9'){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+function adi(){
+    if(p==DIVIDE||p==MULTIPLY||p==PLUS||p==MINUS){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+
+function amu(){
+    if(p==DIVIDE||p==PLUS||p==MINUS||p==MULTIPLY){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+
+function apl(){
+    if(p==DIVIDE||p==MULTIPLY||p==MINUS||p==PLUS){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+
+function ami(){
+    if(p==PLUS||p==MINUS){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+
+function anu(){
+    return true;
+}
+
+function aeq(){
+    if(p==MULTIPLY||p==DIVIDE||p==PLUS||p==MINUS){
+        c=='0';
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+
+function clear_input(){
+    document.getElementsByClassName("text")[0].innerHTML="";
+    input_equation=""; process_equation=""; input_string="";
+    p=""; c=""; no_key_pressed=true; allow=false;
+    equal_is_pressed=false;
 }
